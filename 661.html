@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>قطاع الـ CIA</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #000;
+            color: #fff;
+            text-align: center;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            overflow: hidden;
+        }
+        .question-mark {
+            font-size: 5rem;
+            color: #0f0;
+            animation: blink 1s infinite;
+        }
+        @keyframes blink {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0; }
+        }
+        .login-container {
+            margin-top: 20px;
+        }
+        input {
+            padding: 10px;
+            font-size: 1rem;
+            margin-bottom: 10px;
+            border: 2px solid #0f0;
+            border-radius: 5px;
+            background-color: #111;
+            color: #fff;
+        }
+        button {
+            padding: 10px 20px;
+            font-size: 1rem;
+            background-color: #0f0;
+            color: #000;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #0c0;
+        }
+        .warning {
+            color: red;
+            margin-top: 10px;
+        }
+        .content {
+            display: none;
+            text-align: left;
+            margin: 20px;
+            max-width: 800px;
+            line-height: 1.6;
+        }
+        .content h1, .content h2 {
+            color: #0f0;
+        }
+    </style>
+</head>
+<body>
+    <div class="question-mark">؟</div>
+    <div class="login-container">
+        <input type="text" id="codeInput" placeholder="أدخل الرمز">
+        <button onclick="validateCode()">دخول</button>
+        <div id="warningMessage" class="warning"></div>
+    </div>
+    <div id="content" class="content">
+        <h1>القوانين والأنظمة الصارمة لوكالة الاستخبارات المركزية الأمريكية (CIA)</h1>
+        <h2>المقدمة</h2>
+        <p>
+            وكالة الاستخبارات المركزية (CIA) هي مؤسسة أمنية حساسة تعمل على جمع وتحليل المعلومات الاستخبارية لحماية الأمن القومي للولايات المتحدة. 
+            تخضع هذه الوكالة لقوانين صارمة، نظم إدارية محكمة، وتسلسل هرمي واضح يضمن الكفاءة والسرية.
+        </p>
+        <h2>القسم الأول: القوانين والأنظمة الأساسية</h2>
+        <p><strong>1. السرية (Confidentiality):</strong> يُمنع الكشف عن أي معلومات استخبارية دون تصريح رسمي.</p>
+        <p><strong>2. الولاء والأمانة (Loyalty and Integrity):</strong> يجب إظهار ولاء مطلق للوكالة ودستور الولايات المتحدة.</p>
+        <p><strong>3. المحاسبة والانضباط (Accountability and Discipline):</strong> الموظفون مسؤولون عن أفعالهم ويخضعون لإجراءات تأديبية صارمة.</p>
+        <p><strong>4. الالتزام بالقانون (Legal Compliance):</strong> الالتزام بالقوانين الفيدرالية والدولية.</p>
+        <h2>القسم الثاني: الأقسام الرئيسية وصلاحياتها</h2>
+        <p><strong>1. إدارة الاستخبارات:</strong> جمع وتحليل المعلومات.</p>
+        <p><strong>2. إدارة العمليات:</strong> تنفيذ العمليات السرية خارج الولايات المتحدة.</p>
+        <p><strong>3. إدارة العلوم والتكنولوجيا:</strong> تطوير تقنيات لدعم العمليات الاستخبارية.</p>
+        <p><strong>4. إدارة الدعم:</strong> توفير الدعم الإداري واللوجستي.</p>
+        <h2>القسم الثالث: الرتب والمناصب</h2>
+        <p><strong>1. الرتب الوظيفية:</strong> مثل محلل استخباري وضابط عمليات.</p>
+        <p><strong>2. المناصب القيادية:</strong> مثل مدير الوكالة ونائبه.</p>
+        <h2>القسم الرابع: آليات الإشراف والمراقبة</h2>
+        <p>تشمل المراجعة الداخلية والرقابة الخارجية والتقييم الدوري لضمان الكفاءة والنزاهة.</p>
+        <h2>الخاتمة</h2>
+        <p>تعمل وكالة الاستخبارات المركزية (CIA) وفق إطار صارم من القوانين لضمان أمن المعلومات والعمليات.</p>
+    </div>
+    <script>
+        const validCodes = ["CIA#Sword#4919", "CENTRAL INTELLIGENCE AGENCY", "Agent A", "Agent B" ];
+
+        function validateCode() {
+            const input = document.getElementById("codeInput").value;
+            const warningMessage = document.getElementById("warningMessage");
+            const content = document.getElementById("content");
+
+            if (validCodes.includes(input)) {
+                warningMessage.textContent = "";
+                document.querySelector(".login-container").style.display = "none";
+                content.style.display = "block";
+                document.body.style.overflow = "auto";
+            } else {
+                warningMessage.textContent = "وورننج: لقد أدخلت رمزًا خاطئًا!";
+                setTimeout(() => {
+                    alert("تم طردك من الموقع بسبب إدخال رمز خاطئ!");
+                    window.location.href = "https://example.com"; // يمكنك تعديل الرابط هنا
+                }, 1000);
+            }
+        }
+    </script>
+</body>
+</html>
